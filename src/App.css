@@ -52,6 +52,13 @@
   border-radius: 0.25rem;
 }
 
+.btn-gradient-info,
+.btn-gradient-info:not([disabled]):not(.disabled).active,
+.btn-gradient-info:not([disabled]):not(.disabled):active,
+.show>.btn-gradient-info.dropdown-toggle {
+  background: linear-gradient(90deg, #90caf9, #047edf 99%);
+}
+
 .btn-gradient-primary {
   border: 0;
   transition: opacity .3s ease;
@@ -94,7 +101,8 @@
   background: linear-gradient(90deg, #da8cff, #9a55ff);
 }
 
-.form-control, .swal2-modal .swal2-content .swal2-input {
+.form-control,
+.swal2-modal .swal2-content .swal2-input {
   border: 1px solid #ebedf2;
   font-size: 18px;
 }
@@ -104,7 +112,7 @@
 }
 
 .bg-gradient-danger {
-  background: linear-gradient(90deg,#ffbf96,#fe7096);
+  background: linear-gradient(90deg, #ffbf96, #fe7096);
 }
 
 .card.card-img-holder .card-img-absolute {
@@ -115,5 +123,112 @@
 }
 
 .bg-gradient-success {
-  background: linear-gradient(90deg,#84d9d2,#07cdae);
+  background: linear-gradient(90deg, #84d9d2, #07cdae);
+}
+
+.card {
+  border-radius: 15px;
+  border: none;
+}
+
+.page-title-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  text-align: center;
+  box-shadow: 0 3px 8.3px 0.7px rgb(163 93 255 / 35%);
+  cursor: pointer;
+}
+
+.card-title {
+  font-weight: 400;
+}
+
+.banner {
+  overflow: hidden;
+  height: 200px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.banner img {
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+button:disabled {
+  pointer-events: none;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.auth-form-btn {
+  padding: 1rem 1rem;
+  line-height: 1.2;
+}
+
+.form-control-lg {
+  height: 3.175rem;
+  padding: 0.94rem 1.94rem;
+  font-size: 1.12rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+}
+
+.font-weight-light {
+  font-weight: 300;
+}
+
+.add-btn-gradient-danger:not(.btn-gradient-light),
+.add-btn-gradient-danger:not(.btn-gradient-light):active,
+.add-btn-gradient-danger:not(.btn-gradient-light):focus,
+.add-btn-gradient-danger:not(.btn-gradient-light):hover {
+  color: rgba(254, 124, 150, .2);
+  ;
+}
+
+.card-box {
+  padding: 40px 20px;
+  text-align: center;
+  border-style: dotted;
+  border: 2px solid #ced4da;
+  border-style: dashed;
+  position: inherit;
+  border-radius: 15px;
+}
+
+.card-div {
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex
+}
+
+.bg-card {
+  background: rgba(254, 124, 150, .2);
+}
+
+.logo-inotebook {
+  padding: 10px 10px;
+  font-size: 25px;
+  font-weight: bolder;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  /* min-height: 60px; */
+  text-align: center;
+}
+
+.edit-icon:not(.btn-gradient-light),
+.edit-icon:not(.btn-gradient-light):focus {
+  color: #f796aa;
+}
+
+.edit-icon:not(.btn-gradient-light):hover {
+  color: #fe7c96;
 }
