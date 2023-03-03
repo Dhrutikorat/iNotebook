@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
-function Signup() {
+function Signup(props) {
 
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
     let navigate = useNavigate();
@@ -18,21 +18,23 @@ function Signup() {
             body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
         })
 
-        const { status, authToken, response } = await responseData.json();
+        const { status, authToken } = await responseData.json();
 
         if (status === 200) {
             // save the suth token and redirect
             localStorage.setItem('token', authToken);
-            toast.success(response,{
-                theme: "colored", 
-                autoClose: 2000
-            });
+            // toast.success(response,{
+            //     theme: "colored", 
+            //     autoClose: 2000
+            // });
+            props.showAleart("User registered successfully","success");
             navigate('/')
         } else {
-            toast.error(response,{
-                theme: "colored", 
-                autoClose: 2000
-            });
+            // toast.error(response,{
+            //     theme: "colored", 
+            //     autoClose: 2000
+            // });
+            props.showAleart("Invalid credentials","danger");
         }
     }
 
