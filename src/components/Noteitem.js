@@ -1,11 +1,12 @@
-import React, { useContext } from 'react'
+import { React, useContext } from 'react'
 import { Link } from 'react-router-dom';
-import NoteContext from '../context/noteContext.js'
+import noteContext from '../context/noteContext';
+
 
 function Noteitem(props) {
-    const context = useContext(NoteContext);
-    const { deleteNote } = context;
     const { note, updateNote } = props;
+    const context = useContext(noteContext);
+    const { deleteNote } = context;
 
     return (
         <>
@@ -25,8 +26,8 @@ function Noteitem(props) {
                             <div className="card-text">
                                 <div dangerouslySetInnerHTML={{ __html: note.description }} />
                                 {
-                                    note.tag && note.tag.split(",").length === 1 
-                                        ? <span className="badge rounded-pill bg-gradient-danger">{note.tag}</span> 
+                                    note.tag && note.tag.split(",").length === 1
+                                        ? <span className="badge rounded-pill bg-gradient-danger">{note.tag}</span>
                                         : note.tag.split(",").map((tag) => {
                                             return <span className="badge rounded-pill bg-gradient-danger m-1">{tag}</span>
                                         })
@@ -42,19 +43,27 @@ function Noteitem(props) {
                 <div className="card card-just-text" data-background="color" data-color={note.colorValue} data-radius="none">
                     <div className="content">
                         <h6 className="category">{new Date(note.date).toLocaleDateString().split(",")[0]}</h6>
-                        <h4 className="title"><Link to={{ pathname: `view/${note._id}`}}>{note.title}</Link></h4>
-                        <div className="description" dangerouslySetInnerHTML={{ __html: note.description.slice(0, 250) }} />
-                        <div className='d-flex my-4'>
-
-                            {note.tag && note.tag.split(",").length === 1
-                                ? <span className="badge rounded-pill bg-gradient-danger">{note.tag}</span>
-                                : note.tag.split(",").map((tag,i) => {
-                                    return <span className="badge rounded-pill bg-gradient-danger m-1" key={i}>{tag}</span>
-                                })}
+                        <div className="row mb-4">
+                            <div className="col-auto">
+                                <h4 className="title">
+                                    <Link to={{ pathname: `view/${note._id}` }}>{note.title}</Link>
+                                </h4>
+                            </div>
+                            <div className="col">
+                                <div style={{ cursor: 'pointer' }}>
+                                    <i className="fa-regular fa-pen-to-square icon" onClick={() => { updateNote(note); }}></i>
+                                    <i className="fa-solid fa-trash icon" onClick={() => { deleteNote(note._id); props.showAleart("Note deleted successfully", "success"); }}></i>
+                                </div>
+                            </div>
                         </div>
-                        <div style={{ cursor: 'pointer' }}>
-                            <i className="fa-regular fa-pen-to-square icon" onClick={() => { updateNote(note); }}></i>
-                            <i className="fa-solid fa-trash icon" onClick={() => { deleteNote(note._id); props.showAleart("Note deleted successfully", "success"); }}></i>
+                        <div className="description" dangerouslySetInnerHTML={{ __html: note.description.slice(0, 250) }} />
+                        <div className=' text-dark'>
+                            <i className="fa-solid fa-tags pe-2 py-2"></i> 
+                            {note.tag && note.tag.split(",").length === 1
+                                ? <span className="badge btn btn-light text-dark m-1">{note.tag}</span>
+                                : note.tag.split(",").map((tag, i) => {
+                                    return <span className="badge btn btn-light text-dark m-1" key={i}>{tag}</span>
+                                })}
                         </div>
                     </div>
                 </div>

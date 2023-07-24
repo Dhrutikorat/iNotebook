@@ -3,7 +3,7 @@ import React from 'react'
 function Alert(props) {
 
     const capitalize = (word) => {
-        if(word === 'danger'){
+        if (word === 'danger') {
             word = 'error';
         }
         const lower = word.toLowerCase();
@@ -11,11 +11,14 @@ function Alert(props) {
     }
 
     return (
-        <div style={{height: '50px'}}>
-            {props.alert && <div className={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
-                <strong>{capitalize(props.alert.type)}</strong> : {props.alert.msg}
+        <>
+            { props.alert && props.alert.length > 0  && <div style={{ height: '50px', marginTop: '80px', display: (props.alert !== "" || props.alert !== null) ? 'block' : 'none' }}>
+                {props.alert && <div className={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
+                    <strong>{capitalize(props.alert.type)}</strong> : {props.alert.msg}
+                </div>}
             </div>}
-        </div>
+        </>
+
     )
 }
 

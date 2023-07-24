@@ -23,7 +23,7 @@ function Addnote(props) {
     useEffect(() => {
         setColor(localStorage.getItem('noteColor'));
         if (Object.keys(error).length === 0 && isSubmit) {
-            if(colorValue === "") {
+            if (colorValue === "") {
                 addNote(title, description, tag.toString(), dataValue);
             } else {
                 addNote(title, description, tag.toString(), colorValue);
@@ -31,7 +31,7 @@ function Addnote(props) {
             props.showAleart("Note added successfully", "success");
             navigate('/')
         }
-    }, [error, navigate]);
+    }, [error, navigate, props, addNote, title, description, tag, dataValue, colorValue, isSubmit]);
 
     // const handleClick = (e) => {
     //     e.preventDefault();
@@ -111,9 +111,9 @@ function Addnote(props) {
                                                                 border: '2px solid rgb(255, 248, 220)',
                                                                 borderRadius: '50%',
                                                                 marginRight: "5px"
-                                                            }} 
-                                                            className={`${color === props.colorNames[key] ? 'divActive ' :''}`}
-                                                            onClick={() => handleClick(key, props.colorNames[key])} 
+                                                            }}
+                                                            className={`${color === props.colorNames[key] ? 'divActive ' : ''}`}
+                                                            onClick={() => handleClick(key, props.colorNames[key])}
                                                             key={key}>
                                                         </div>
                                                     );
@@ -126,7 +126,7 @@ function Addnote(props) {
                                             <div className="mb-3">
                                                 {/* <textarea type="text" className="form-control" id="description" name='description' value={description} placeholder="Description" rows="8" onChange={onChange} required="required" style={{ backgroundColor: `${noteColor}` }} /> */}
                                                 <Editor
-                                                    apiKey='wn1qh18crw4ncaaehy36g8yjjvkyv8ivuawgyjsxzovvevop'
+                                                    apiKey='lnyvvpneof9cn4kor1wd6q6olt9svw64xogxmndyql76bxqf'
                                                     onEditorChange={(newValue, editor) => {
                                                         setDescription(newValue);
                                                         setText(editor.getContent({ format: 'text' }))
@@ -137,8 +137,8 @@ function Addnote(props) {
                                                         selector: 'textarea',
                                                         advcode_inline: true,
                                                         toolbar_mode: 'sliding',
-                                                        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tableofcontents footnotes mergetags autocorrect typography inlinecss',
-                                                        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat|forecolor backcolor',
+                                                        plugins: 'anchor autolink  codesample  image link lists media wordcount',
+                                                        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic | link| spellcheckdialog a11ycheck typography | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat|forecolor backcolor',
                                                         content_style: `body{ font-family: 'Cedarville Cursive', cursive;}`
                                                     }}
 

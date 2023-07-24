@@ -74,7 +74,7 @@
 }
 
 .content-wrapper {
-  background: #f2edf3;
+  /* background: #f2edf3; */
   /* padding: 2.75rem 2.25rem; */
   width: 100%;
   flex-grow: 1;
@@ -289,7 +289,7 @@ button:disabled {
 }
 
 .icon {
-  color: #f796aa;
+  color: black;
   padding-right: 20px;
   padding-bottom: 5px;
   transition: 0.3s;
@@ -451,9 +451,9 @@ body {
   padding: 20px 20px 10px 20px;
 }
 
-/* .card[data-color="blue"] .category {
+.card[data-color="sky"] .category {
   color: #7a9e9f;
-} */
+}
 
 .card .category,
 .card .label {
@@ -505,11 +505,11 @@ a:focus {
 }
 
 /*======== COLORS ===========*/
-.card[data-color="blue"] {
+.card[data-color="sky"] {
   background: #b8d8d8;
 }
 
-.card[data-color="blue"] .description {
+.card[data-color="sky"] .description {
   color: #506568;
 }
 
@@ -525,8 +525,28 @@ a:focus {
   color: #92ac56;
 }
 
-.card[data-color="yellow"] {
-  background: #ffe28c;
+.bg-yellow {
+  background: #ffe28c !important;
+}
+
+.bg-green {
+  background: #d5e5a3 !important;
+}
+
+.bg-brown {
+  background: #a47e65 !important;
+}
+
+.bg-purple {
+  background: #baa9ba !important;
+}
+
+.bg-orange {
+  background: #ff8f5e  !important;
+}
+
+.bg-blue {
+  background: #b8d8d8 !important;
 }
 
 .card[data-color="yellow"] .description {
@@ -539,6 +559,10 @@ a:focus {
 
 .card[data-color="brown"] {
   background: #d6c1ab;
+}
+
+.card[data-color="yellow"] {
+  background: #ffe28c;
 }
 
 .card[data-color="brown"] .description {

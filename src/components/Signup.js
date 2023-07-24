@@ -18,11 +18,12 @@ function Signup(props) {
             body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
         })
 
-        const { status, authToken } = await responseData.json();
+        const { status, data } = await responseData.json();
 
         if (status === 200) {
             // save the suth token and redirect
-            localStorage.setItem('token', authToken);
+            localStorage.setItem('token', data.authToken);
+            localStorage.setItem('name', data.user.name);
             // toast.success(response,{
             //     theme: "colored", 
             //     autoClose: 2000
@@ -65,7 +66,7 @@ function Signup(props) {
                                     <input type="password" className="form-control form-control-lg" id="cpassword" value={credentials.cpassword} name="cpassword" onChange={onChange} placeholder="Confirm password" minLength={6} required/>
                                 </div>
                                 <div className="d-flex">
-                                    <button type="submit" className="btn-gradient-primary btn-block auth-form-btn" >Sign up </button>
+                                    <button type="submit" className="btn btn-warning btn-block auth-form-btn" >Sign up </button>
                                 </div>
                             </form>
                         </div>

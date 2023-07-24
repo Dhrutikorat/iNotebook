@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router-dom';
 import NoteContext from './noteContext'
 import { useState } from 'react'
 
@@ -8,6 +9,7 @@ const NoteState = (props) => {
     const [message, setMessage] = useState("");
     const [status, setStatus] = useState("");
     const [noteTags, setNoteTags] = useState([]);
+    const [userNote, setUserNote] = useState({});
 
     // Fetch user all notes
     const getAllNotes = async (search) => {
@@ -37,6 +39,19 @@ const NoteState = (props) => {
         // setMessage(response);
     }
 
+    // fetch user note by id
+    const getUserNoteById = async (id) => {
+        const responseData = await fetch(`${url}/api/notes/get/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': localStorage.getItem('token')
+            },
+        });
+        const { data } = await responseData.json();
+        setUserNote(data);
+    }
+
     // Fetch user all note's by tagname
     const getNotesByTag = async (tag) => {
         const responseData = await fetch(`${url}/api/notes/tag/${tag}`, {
@@ -46,8 +61,10 @@ const NoteState = (props) => {
                 'auth-token': localStorage.getItem('token')
             },
         });
-        const { data } = await responseData.json();
-        setNotes(data);
+        const { status, data } = await responseData.json();
+        if (status === 200) {
+            setNotes(data);
+        }
 
     }
 
@@ -60,16 +77,18 @@ const NoteState = (props) => {
                 'auth-token': localStorage.getItem('token')
             },
         });
-        const { data } = await responseData.json();
+        const { status, data } = await responseData.json();
         // setNoteTags(data);
-        let tagsArr = data.toString().split(",");
-
-        setNoteTags(removeDuplicates(tagsArr));
-        
+        if (status === 200) {
+            let tagsArr = data.toString().split(",");
+            if (tagsArr.length > 0) {
+                setNoteTags(removeDuplicates(tagsArr));
+            }
+        } 
     }
 
-    const removeDuplicates = (arr)=> {
-        return arr.filter((item, 
+    const removeDuplicates = (arr) => {
+        return arr.filter((item,
             index) => arr.indexOf(item) === index);
     }
 
@@ -106,6 +125,7 @@ const NoteState = (props) => {
         setMessage(response) /// add if else based on API status
         const newNotes = notes.filter((note) => { return (note._id !== id) });
         setNotes(newNotes);
+        Navigate('/');
     }
 
     // Edit note
@@ -141,7 +161,7 @@ const NoteState = (props) => {
     }
 
     return (
-        <NoteContext.Provider value={{ notes, message, status, noteTags, setMessage, setNotes, addNote, editNote, deleteNote, getAllNotes, getNotesByTag, getAllTags }}>
+        <NoteContext.Provider value={{ notes, message, status, noteTags, userNote, setMessage, setNotes, addNote, editNote, deleteNote, getAllNotes, getNotesByTag, getAllTags, getUserNoteById }}>
             {props.children}
         </NoteContext.Provider>
     )

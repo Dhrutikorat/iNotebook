@@ -7,7 +7,7 @@ export default function Test() {
                 <div className="row">
                     <div className="col-md-4 col-sm-6 content-card">
                         <div className="card-big-shadow">
-                            <div className="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                            <div className="card card-just-text" data-background="color" data-color="sky" data-radius="none">
                                 <div className="content">
                                     <h6 className="category">01-03-2023</h6>
                                     <h4 className="title"><a href="/">Blue Card</a></h4>

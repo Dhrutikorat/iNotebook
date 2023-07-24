@@ -17,10 +17,11 @@ function Login(props) {
             body: JSON.stringify({ email: credentials.email, password: credentials.password })
         })
 
-        const { status, authToken } = await responseData.json();
+        const { status, data } = await responseData.json();
         if (status === 200) {
             // save the suth token and redirect
-            localStorage.setItem('token', authToken);
+            localStorage.setItem('token', data.authToken);
+            localStorage.setItem('name', data.user.name);
             // toast.success(response, {
             //     theme: "colored", 
             //     autoClose: 2000
@@ -56,7 +57,7 @@ function Login(props) {
                                     <input type="password" className="form-control form-control-lg" id="password" name="password" value={credentials.password} onChange={onChange} placeholder="Password" />
                                 </div>
                                 <div className="d-flex">
-                                    <button type="submit" className="btn-gradient-danger btn-block auth-form-btn">Login </button>
+                                    <button type="submit" className="btn btn-warning btn-block auth-form-btn">Login </button>
                                 </div>
                             </form>
                         </div>
