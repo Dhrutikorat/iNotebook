@@ -32,10 +32,27 @@ inotebook/
 
 - Create and edit documents seamlessly across devices.
 - Add annotations to PDFs using tools like S Pen.
-- Include images within your documents for rich content creation.
 - Integrate with various apps such as PDF readers, Microsoft Word, and Microsoft PowerPoint.
 
 ---
+
+### Login
+![Login](images/login.png)
+
+### Register
+![Register](images/register.png)
+
+### Notes
+![Notes](images/notes.png)
+
+### Create Note
+![Create note](images/create-note.png)
+
+### Edit Note
+![Edit note](images/edit-note.png)
+
+### Profile
+![Profile](images/profile.png)
 
 ## Backend Setup (Node.js)
 
